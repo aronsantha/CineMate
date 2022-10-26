@@ -1,6 +1,6 @@
 # cinemate
 
-CineMate is your best friend when it comes to movies. It only shows you the highest rated movies, and even lets you save your favourites!
+CineMate is your best friend when it comes to movies. It only shows you the highest rated movies, and even lets you save movies for later!
 
 ## Recommended IDE Setup
 
