@@ -1,6 +1,9 @@
 <template>
   <div class="bg-red-200 p-5 outline">
-    <div>{{ movie.original_title }}</div>
+    <div>
+      {{ movie.original_title }} |
+      <span class="text-pink-700 font-bold" @click="onSave(movie)">Save</span>
+    </div>
     Rating: {{ movie.vote_average }}
     <div class="flex">
       <img
@@ -17,5 +20,11 @@
 
 <script setup>
 // import { ref } from "vue";
+import { useMovieStore } from "../stores/MovieStore";
+const MovieStore = useMovieStore();
 const props = defineProps(["movie"]);
+
+function onSave(movie) {
+  MovieStore.addMovie(movie);
+}
 </script>
