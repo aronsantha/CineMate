@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+// TODO remove unnecessery imports
 import { ref, computed, reactive } from "vue";
 import SearchBar from "../components/SearchBar.vue";
 import ResultItem from "../components/ResultItem.vue";

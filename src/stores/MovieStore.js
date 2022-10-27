@@ -8,7 +8,17 @@ export const useMovieStore = defineStore("MovieStore", {
   },
   actions: {
     addMovie(movie) {
-      this.savedMovies.push(movie);
+      // check if movie is already saved
+      const isSaved = this.savedMovies.some((object) => {
+        if (object.id === movie.id) {
+          return true;
+        }
+        return false;
+      });
+      // if NOT saved, push movie
+      if (!isSaved) {
+        this.savedMovies.push(movie);
+      }
     },
     removeMovie(removeId) {
       // get index of object with id of removeId

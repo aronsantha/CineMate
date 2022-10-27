@@ -2,7 +2,8 @@
   <div class="bg-red-200 p-5 outline">
     <div>
       {{ movie.original_title }} |
-      <span class="text-pink-700 font-bold" @click="onSave(movie)">Save</span>
+      <span v-if="!isSaved" @click="onSave(movie)">🤍</span>
+      <span v-else @click="onRemove(movie)">❤️</span>
     </div>
     Rating: {{ movie.vote_average }}
     <div class="flex">
@@ -19,7 +20,8 @@
 </template>
 
 <script setup>
-// import { ref } from "vue";
+// TODO remove unnecessery imports
+import { ref, computed, reactive } from "vue";
 import { useMovieStore } from "../stores/MovieStore";
 const MovieStore = useMovieStore();
 const props = defineProps(["movie"]);
@@ -27,4 +29,14 @@ const props = defineProps(["movie"]);
 function onSave(movie) {
   MovieStore.addMovie(movie);
 }
+
+function onRemove(movie) {
+  MovieStore.removeMovie(movie);
+}
+
+const isSaved = computed(() => {
+  return MovieStore.savedMovies.some(
+    (savedMovie) => savedMovie.id === props.movie.id
+  );
+});
 </script>

@@ -13,7 +13,8 @@
 
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+// TODO remove unnecessery imports
+import { ref, computed, reactive } from "vue";
 const emit = defineEmits(["emitResponseData", "emitErrorMsg", "emitLoader"]);
 
 // Search function

@@ -21,7 +21,8 @@
 </template>
 
 <script setup>
-// import { ref } from "vue";
+// TODO remove unnecessery imports
+import { ref, computed, reactive } from "vue";
 import { useMovieStore } from "../stores/MovieStore";
 const MovieStore = useMovieStore();
 const props = defineProps(["savedMovie"]);
