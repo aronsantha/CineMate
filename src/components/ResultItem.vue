@@ -2,8 +2,12 @@
   <div class="bg-red-200 p-5 outline">
     <div>
       {{ movie.original_title }} |
-      <span v-if="!isSaved" @click="onSave(movie)">🤍</span>
-      <span v-else @click="onRemove(movie)">❤️</span>
+      <span v-if="!isSaved" @click="onSave(movie)">
+        <i class="fa-regular fa-star"></i>
+      </span>
+      <span v-else @click="onRemove(movie)"
+        ><i class="fa-solid fa-star"></i
+      ></span>
     </div>
     Rating: {{ movie.vote_average }}
     <div class="flex">

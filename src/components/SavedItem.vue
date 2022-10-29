@@ -2,9 +2,9 @@
   <div class="bg-red-200 p-5 outline">
     <div>
       {{ savedMovie.original_title }} |
-      <span class="text-pink-700 font-bold" @click="onRemove(savedMovie.id)"
-        >Remove</span
-      >
+      <span @click="onRemove(savedMovie.id)"
+        ><i class="fa-solid fa-star"></i
+      ></span>
     </div>
     Rating: {{ savedMovie.vote_average }}
     <div class="flex">
