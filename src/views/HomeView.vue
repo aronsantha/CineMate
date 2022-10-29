@@ -1,20 +1,28 @@
 <template>
-  <SearchBar
-    @emitResponseData="handleResponseData"
-    @emitErrorMsg="handleErrorMsg"
-    @emitLoader="handleLoader"
-  ></SearchBar>
-  <div>
-    <div v-if="error.length > 0">{{ error }}</div>
-    <div v-else-if="sortedMovies.length">
-      <ResultItem v-for="movie in sortedMovies" :movie="movie" :key="movie.id">
-      </ResultItem>
-    </div>
-    <div v-else-if="!loader">Type in your search above.</div>
+  <div class="w-full max-w-3xl px-6 my-20 md:my-6 mx-auto">
+    <SearchBar
+      @emitResponseData="handleResponseData"
+      @emitErrorMsg="handleErrorMsg"
+      @emitLoader="handleLoader"
+    ></SearchBar>
+    <div
+      class="w-full rounded-md mt-3 bg-rose-900 bg-opacity-50 border border-stone-900 p-1 text-neutral-100"
+    >
+      <div v-if="error.length > 0" class="p-3">{{ error }}</div>
+      <div v-else-if="sortedMovies.length">
+        <ResultItem
+          v-for="movie in sortedMovies"
+          :movie="movie"
+          :key="movie.id"
+        >
+        </ResultItem>
+      </div>
+      <div v-else-if="!loader" class="p-3">
+        Start typing above.
+        <i class="fa-solid fa-arrow-turn-up ml-2" aria-hidden="true"></i>
+      </div>
 
-    <div v-show="loader && !sortedMovies.length" class="bg-emerald-500 h-50">
-      <SpinnerComp />
-      Loading some data, please wait...
+      <SpinnerComp v-show="loader && !sortedMovies.length" />
     </div>
   </div>
 </template>

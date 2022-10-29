@@ -1,14 +1,12 @@
 <template>
-  <div class="bg-blue-200 p-2 flex gap-5">
-    <input
-      @keyup="debounceGetMovies"
-      v-model="search"
-      type="string"
-      placeholder="Search for movies"
-      class="text-3xl p-2"
-      aria-label="Movie title"
-    />
-  </div>
+  <input
+    @keyup="debounceGetMovies"
+    v-model="search"
+    type="string"
+    placeholder="Search for movies"
+    class="w-full rounded-md p-3 text-md text-neutral-100 placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-teal-500 focus:shadow-md focus:shadow-teal-500"
+    aria-label="Movie title"
+  />
 </template>
 
 <script setup>
@@ -19,7 +17,7 @@ const emit = defineEmits(["emitResponseData", "emitErrorMsg", "emitLoader"]);
 
 // Search function
 
-const search = ref(null);
+const search = ref("");
 const api = "";
 
 function getMovies() {
@@ -35,7 +33,10 @@ function getMovies() {
       .then((response) => {
         // IF NO RESULT: emmitting custom message (because API does not send error message in that case)
         if (response.data.total_results < 1) {
-          emit("emitErrorMsg", "Sorry, no results for your search!");
+          emit(
+            "emitErrorMsg",
+            "Sorry, no results for " + search.value + ". Let's try again!"
+          );
         }
 
         // IF RESULT: emmitting result
@@ -48,9 +49,9 @@ function getMovies() {
         } else {
           emit(
             "emitErrorMsg",
-            "Oh no, it looks like there has been an error: " +
+            "Oh no, it looks like there has been an problem: " +
               error.message +
-              " !"
+              "!"
           );
         }
       })
@@ -60,6 +61,7 @@ function getMovies() {
       });
   } else {
     // IF EMPTY INPUT: empty ResponseData accordingly
+    emit("emitErrorMsg", "");
     emit("emitResponseData", "");
     emit("emitLoader", false);
   }

@@ -1,9 +1,14 @@
 <template>
-  <div v-if="MovieStore.savedMovies.length">
+  <h1 class="text-neutral-100">My Collection</h1>
+  <div
+    v-if="MovieStore.savedMovies.length"
+    class="flex flex-wrap gap-8 max-w-3xl mx-auto my-20 md:my-6"
+  >
     <SavedItem
       v-for="savedMovie in MovieStore.savedMovies"
       :key="savedMovie.id"
       :savedMovie="savedMovie"
+      class="text-neutral-100"
     >
     </SavedItem>
   </div>
