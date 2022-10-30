@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <nav
-      class="bg-stone-900 text-neutral-100 text-sm px-6 py-3 min-h-[4rem] w-full flex justify-between items-center flex-wrap gap-4"
+      class="bg-stone-900 text-sm px-6 py-3 min-h-[4rem] w-full flex justify-between items-center flex-wrap gap-4"
     >
       <RouterLink to="/" class="flex">
         <img
@@ -24,15 +24,18 @@ import { RouterLink, RouterView } from "vue-router";
           to="/"
           class="text-center hover:bg-stone-500 rounded-md px-4 py-2"
           exact-active-class="bg-stone-600 bg-stone-600 font-medium"
-          ><span class="fa-solid fa-magnifying-glass" aria-label="Home"></span>
-          <span class="ml-2 md:hidden">Home</span>
+          ><span
+            class="fa-solid fa-magnifying-glass"
+            aria-label="Discover"
+          ></span>
+          <span class="ml-2 md:hidden">Discover</span>
         </RouterLink>
         <RouterLink
-          to="/saved"
+          to="/collection"
           class="text-center hover:bg-stone-500 rounded-md px-4 py-2"
           exact-active-class="bg-stone-600 bg-stone-600 font-medium"
-          ><i class="fa-regular fa-star" aria-label="Saved Movies"></i
-          ><span class="ml-2 md:hidden">Saved</span>
+          ><span class="fa-regular fa-star" aria-label="My Collection"></span
+          ><span class="ml-2 md:hidden">My Collection</span>
         </RouterLink>
       </span>
     </nav>

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md p-10 bg-stone-900 text-center text-neutral-100">
+  <div class="rounded-md p-10 bg-stone-900 text-center text-sm">
     <div class="flex justify-center pb-5">
       <svg
         aria-hidden="true"
@@ -18,6 +18,6 @@
         />
       </svg>
     </div>
-    Loading some data, please wait...
+    We're getting your results. Please wait...
   </div>
 </template>

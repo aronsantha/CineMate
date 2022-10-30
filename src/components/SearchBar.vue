@@ -4,7 +4,7 @@
     v-model="search"
     type="string"
     placeholder="Search for movies"
-    class="w-full rounded-md p-3 text-md text-neutral-100 placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-teal-500 focus:shadow-md focus:shadow-teal-500"
+    class="w-full rounded-md p-3 text-md placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-teal-500 focus:shadow-lg focus:shadow-rose-500/50"
     aria-label="Movie title"
   />
 </template>

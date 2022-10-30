@@ -13,4 +13,24 @@ body {
   height: 100%;
   background-color: hsl(24, 10%, 5%);
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: rgb(245 245 245);
+}
+
+/* SCROLL BAR  */
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(120 113 108);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(87 83 78);
 }

@@ -1,14 +1,23 @@
 <template>
-  <div class="w-full max-w-3xl px-6 my-20 md:my-6 mx-auto">
+  <div class="max-w-3xl mx-auto px-6 mt-16 md:mt-8">
+    <h1 class="text-lg font-medium md:text-base mb-5">Discover</h1>
+    <div class="text-sm">
+      Let's find some movies and add them to your collection!
+    </div>
+  </div>
+  <div class="w-full max-w-3xl mx-auto mt-16 md:mt-10 mb-20 px-6">
     <SearchBar
       @emitResponseData="handleResponseData"
       @emitErrorMsg="handleErrorMsg"
       @emitLoader="handleLoader"
     ></SearchBar>
-    <div
-      class="w-full rounded-md mt-3 bg-rose-900 bg-opacity-50 border border-stone-900 p-1 text-neutral-100"
-    >
-      <div v-if="error.length > 0" class="p-3">{{ error }}</div>
+    <div class="w-full rounded-md mt-8">
+      <div
+        v-if="error.length > 0"
+        class="w-full rounded-md mt-8 bg-rose-900 bg-opacity-50 p-4 text-sm"
+      >
+        {{ error }}
+      </div>
       <div v-else-if="sortedMovies.length">
         <ResultItem
           v-for="movie in sortedMovies"
@@ -17,8 +26,11 @@
         >
         </ResultItem>
       </div>
-      <div v-else-if="!loader" class="p-3">
-        Start typing above.
+      <div
+        v-else-if="!loader"
+        class="w-full rounded-md mt-8 bg-stone-900 p-4 text-sm"
+      >
+        Start typing a movie title above.
         <i class="fa-solid fa-arrow-turn-up ml-2" aria-hidden="true"></i>
       </div>
 

@@ -1,20 +1,31 @@
 <template>
-  <h1 class="text-neutral-100">My Collection</h1>
-  <div
-    v-if="MovieStore.savedMovies.length"
-    class="flex flex-wrap gap-8 max-w-3xl mx-auto my-20 md:my-6"
-  >
-    <SavedItem
-      v-for="savedMovie in MovieStore.savedMovies"
-      :key="savedMovie.id"
-      :savedMovie="savedMovie"
-      class="text-neutral-100"
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="mt-16 md:mt-8">
+      <h1 class="text-lg font-medium md:text-base">My Collection</h1>
+    </div>
+    <div
+      v-if="MovieStore.savedMovies.length"
+      class="flex flex-wrap gap-10 mt-16 md:mt-10 mb-20"
     >
-    </SavedItem>
-  </div>
-  <div v-else class="bg-lime-300">
-    You don't have movies in your collection.
-    <RouterLink to="/" class="bg-cyan-200">Search and add movies!</RouterLink>
+      <SavedItem
+        v-for="savedMovie in MovieStore.savedMovies"
+        :key="savedMovie.id"
+        :savedMovie="savedMovie"
+      >
+      </SavedItem>
+    </div>
+
+    <div
+      v-else
+      class="w-full rounded-md mt-16 md:mt-10 bg-stone-900 p-4 text-sm"
+    >
+      <div class="mb-5">There are no movies in your collection.</div>
+      <RouterLink
+        to="/"
+        class="font-medium hover:underline underline-offset-4 py-1"
+        >Click here to search and add movies!</RouterLink
+      >
+    </div>
   </div>
 </template>
 

@@ -1,51 +1,45 @@
 <template>
   <div
     v-show="isImgLoaded || !movie.poster_path"
-    class="rounded-md p-5 mb-2 last:mb-0 bg-stone-900"
+    class="rounded-md overflow-hidden mb-5 last:mb-0 bg-stone-900 flex flex-wrap gap-x-8 justify-start h-40 sm:h-auto shadow-md shadow-rose-900/75"
   >
-    <div class="flex flex-wrap gap-5 justify-between">
-      <img
-        v-if="movie.poster_path"
-        :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-        @load="onImgLoad()"
-        class="w-[100px] h-2/3 sm:w-full rounded-sm basis-3/12"
-      />
+    <img
+      v-if="movie.poster_path"
+      :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+      @load="onImgLoad()"
+      class="h-full w-auto sm:w-full basis-2/12"
+    />
 
-      <img
-        v-else
-        src="../assets/images/img_placeholder.png"
-        class="w-[100px] h-2/3 sm:w-full rounded-sm basis-3/12"
-      />
+    <img
+      v-else
+      src="../assets/images/img_placeholder.png"
+      class="w-3/2 h-full sm:w-full basis-2/12"
+    />
 
-      <div class="basis-8/12 sm:basis-full">
-        <div class="flex flex-wrap justify-between mb-5">
-          <div class="text-base font-medium">
-            {{ movie.title }}
-            <span class="text-neutral-300 pl-1">
-              ({{ movie.release_date.slice(0, 4) }})
-            </span>
-            <div class="text-sm text-neutral-400 pt-1">
-              {{ movie.vote_average }}<span class="text-neutral-500"> /10</span>
-            </div>
+    <div class="basis-9/12 sm:basis-full py-5 sm:px-5">
+      <div class="flex flex-wrap justify-between mb-3">
+        <div class="text-base sm:text-sm font-medium sm:basis-9/12">
+          {{ movie.title }}
+          <span class="text-neutral-400 pl-1">
+            ({{ movie.release_date.slice(0, 4) }})
+          </span>
+          <div class="text-sm sm:text-xs text-neutral-400">
+            {{ movie.vote_average }}<span class="text-neutral-500"> /10</span>
           </div>
-          <div
-            v-if="!isSaved"
-            @click="onSave(movie)"
-            class="cursor-pointer hover:fa-beat"
-          >
-            <i
-              class="fa-regular fa-star fa-lg px-2 leading-8 text-rose-900 hover:scale-125"
-            ></i>
-          </div>
-          <span v-else @click="onRemove(movie)" class="cursor-pointer"
-            ><i
-              class="fa-solid fa-star fa-lg px-2 leading-8 text-rose-900 hover:scale-125"
-            ></i
-          ></span>
         </div>
-
-        <div class="text-sm leading-6">{{ movie.overview }}</div>
+        <div v-if="!isSaved" @click="onSave(movie)" class="cursor-pointer">
+          <i
+            class="fa-regular fa-star fa-lg leading-8 text-rose-900 hover:scale-125 ease-in-out"
+          ></i>
+        </div>
+        <span v-else @click="onRemove(movie)" class="cursor-pointer"
+          ><i
+            class="fa-solid fa-star fa-lg leading-8 text-rose-900 hover:scale-125 ease-in-out"
+          ></i
+        ></span>
       </div>
+
+      <div class="text-xs pr-12 sm:p-0 line-clamp-3">{{ movie.overview }}</div>
     </div>
   </div>
 </template>
