@@ -12,6 +12,8 @@ CineMate is your best friend when it comes to movies. It only shows you the high
 npm install
 ```
 
+To include your TMDB API key, create a .env file in the main directory. Inside, paste the content of .env.example and replace the variable value with your API key.
+
 ### Compile and Hot-Reload for Development
 
 ```sh

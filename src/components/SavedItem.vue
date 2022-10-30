@@ -1,6 +1,6 @@
-<!-- TODO either remove hover:scale and hover:cursor-pointer, or add extra detail functionality -->
 <template>
   <div
+    @click="visitMovie"
     class="w-52 h-80 bg-stone-900 rounded-xl overflow-hidden shadow-md shadow-rose-900/75 sm:w-full sm:h-96 hover:scale-105 hover:cursor-pointer ease-in-out"
   >
     <img
@@ -46,5 +46,11 @@ const props = defineProps(["savedMovie"]);
 
 function onRemove(removeId) {
   MovieStore.removeMovie(removeId);
+}
+
+function visitMovie(event) {
+  if (event.target.tagName.toLowerCase() !== "i") {
+    window.open(`https://www.themoviedb.org/movie/${props.savedMovie.id}`);
+  }
 }
 </script>

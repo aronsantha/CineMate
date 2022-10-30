@@ -4,7 +4,7 @@
     v-model="search"
     type="string"
     placeholder="Search for movies"
-    class="w-full rounded-md p-3 text-md placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-teal-500 focus:shadow-lg focus:shadow-rose-500/50"
+    class="w-full rounded-md p-3 text-md placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-2 focus:border-rose-800 focus:shadow-lg focus:shadow-rose-500/50"
     aria-label="Search for movies by title"
   />
 </template>
@@ -17,7 +17,7 @@ const emit = defineEmits(["emitResponseData", "emitErrorMsg", "emitLoader"]);
 // Search function
 
 const search = ref("");
-const api = "";
+const api = import.meta.env.VITE_MOVIE_API_KEY;
 
 function getMovies() {
   if (search.value.length > 2) {
