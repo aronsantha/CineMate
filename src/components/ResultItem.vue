@@ -1,4 +1,5 @@
 <template>
+  <!-- If poster image exists, only show component when poster image has loaded -->
   <div
     v-show="isImgLoaded || !movie.poster_path"
     class="rounded-md overflow-hidden mb-5 last:mb-0 bg-stone-900 flex flex-wrap gap-x-8 justify-start h-40 sm:h-auto shadow-md shadow-rose-900/75"
@@ -12,7 +13,7 @@
 
     <img
       v-else
-      src="../assets/images/img_placeholder.png"
+      src="../assets/images/placeholder.png"
       class="w-3/2 h-full sm:w-full basis-2/12"
     />
 
@@ -45,9 +46,9 @@
 </template>
 
 <script setup>
-// TODO remove unnecessery imports
-import { ref, computed, reactive } from "vue";
+import { ref, computed } from "vue";
 import { useMovieStore } from "../stores/MovieStore";
+
 const MovieStore = useMovieStore();
 const props = defineProps(["movie"]);
 
@@ -60,11 +61,11 @@ function onRemove(movie) {
 }
 
 const isImgLoaded = ref(false);
-
 function onImgLoad() {
   isImgLoaded.value = true;
 }
 
+// Check if movie is among savedMovies
 const isSaved = computed(() => {
   return MovieStore.savedMovies.some(
     (savedMovie) => savedMovie.id === props.movie.id

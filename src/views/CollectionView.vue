@@ -1,8 +1,6 @@
 <template>
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="mt-16 md:mt-8">
-      <h1 class="text-lg font-medium md:text-base">My Collection</h1>
-    </div>
+  <div class="max-w-3xl mx-auto px-6 mt-16 md:mt-8">
+    <h1 class="text-lg font-medium md:text-base">My Collection</h1>
     <div
       v-if="MovieStore.savedMovies.length"
       class="flex flex-wrap gap-10 mt-16 md:mt-10 mb-20"
@@ -21,7 +19,7 @@
     >
       <div class="mb-5">There are no movies in your collection.</div>
       <RouterLink
-        to="/"
+        :to="{ name: 'discover' }"
         class="font-medium hover:underline underline-offset-4 py-1"
         >Click here to search and add movies!</RouterLink
       >
@@ -30,8 +28,6 @@
 </template>
 
 <script setup>
-// TODO remove unnecessery imports
-import { ref, computed, reactive } from "vue";
 import SavedItem from "../components/SavedItem.vue";
 import { useMovieStore } from "../stores/MovieStore";
 

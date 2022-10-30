@@ -2,7 +2,7 @@
 // Read more: https://pinia.vuejs.org/core-concepts/#setup-stores
 
 import { defineStore } from "pinia";
-import { ref, watch, computed, reactive } from "vue";
+import { ref, watch } from "vue";
 
 export const useMovieStore = defineStore("MovieStore", () => {
   const savedMovies = ref([]);

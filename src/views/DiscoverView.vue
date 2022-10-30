@@ -1,9 +1,7 @@
 <template>
   <div class="max-w-3xl mx-auto px-6 mt-16 md:mt-8">
     <h1 class="text-lg font-medium md:text-base mb-5">Discover</h1>
-    <div class="text-sm">
-      Let's find some movies and add them to your collection!
-    </div>
+    <div class="text-sm">Let's find some movies for your collection!</div>
   </div>
   <div class="w-full max-w-3xl mx-auto mt-16 md:mt-10 mb-20 px-6">
     <SearchBar
@@ -34,17 +32,16 @@
         <i class="fa-solid fa-arrow-turn-up ml-2" aria-hidden="true"></i>
       </div>
 
-      <SpinnerComp v-show="loader && !sortedMovies.length" />
+      <ResultLoader v-show="loader && !sortedMovies.length" />
     </div>
   </div>
 </template>
 
 <script setup>
-// TODO remove unnecessery imports
-import { ref, computed, reactive } from "vue";
+import { ref, computed } from "vue";
 import SearchBar from "../components/SearchBar.vue";
 import ResultItem from "../components/ResultItem.vue";
-import SpinnerComp from "../components/SpinnerComp.vue";
+import ResultLoader from "../components/ResultLoader.vue";
 
 const movies = ref([]);
 const error = ref("");

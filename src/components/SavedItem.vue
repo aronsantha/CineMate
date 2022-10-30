@@ -6,14 +6,14 @@
     <img
       v-if="savedMovie.poster_path"
       :src="'https://image.tmdb.org/t/p/original' + savedMovie.poster_path"
-      class="object-cover object-center w-full h-44 sm:h-60"
+      class="object-cover object-center w-full h-32 sm:h-60"
       alt="Movie poster"
     />
 
     <img
       v-else
-      src="../assets/images/img_placeholder.png"
-      class="object-cover object-center w-full h-44 sm:h-60"
+      src="../assets/images/placeholder.png"
+      class="object-cover object-center w-full h-32 sm:h-60"
       alt="Movie poster"
     />
 
@@ -35,15 +35,12 @@
       ></span>
       <div class="text-xs mt-4 line-clamp-2">{{ savedMovie.overview }}</div>
     </div>
-
-    <!-- <span @click="onRemove(savedMovie.id)" -->
   </div>
 </template>
 
 <script setup>
-// TODO remove unnecessery imports
-import { ref, computed, reactive } from "vue";
 import { useMovieStore } from "../stores/MovieStore";
+
 const MovieStore = useMovieStore();
 const props = defineProps(["savedMovie"]);
 

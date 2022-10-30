@@ -5,14 +5,13 @@
     type="string"
     placeholder="Search for movies"
     class="w-full rounded-md p-3 text-md placeholder-neutral-400 bg-stone-900 border border-stone-700 focus:bg-stone-800 focus:border-teal-500 focus:shadow-lg focus:shadow-rose-500/50"
-    aria-label="Movie title"
+    aria-label="Search for movies by title"
   />
 </template>
 
 <script setup>
 import axios from "axios";
-// TODO remove unnecessery imports
-import { ref, computed, reactive } from "vue";
+import { ref } from "vue";
 const emit = defineEmits(["emitResponseData", "emitErrorMsg", "emitLoader"]);
 
 // Search function
@@ -31,7 +30,7 @@ function getMovies() {
         `https://api.themoviedb.org/3/search/movie?api_key=${api}&language=en-US&query=${search.value}&page=1&include_adult=false`
       )
       .then((response) => {
-        // IF NO RESULT: emmitting custom message (because API does not send error message in that case)
+        // IF NO RESULT: emit custom message (because API does not send error message in that case)
         if (response.data.total_results < 1) {
           emit(
             "emitErrorMsg",
@@ -39,11 +38,11 @@ function getMovies() {
           );
         }
 
-        // IF RESULT: emmitting result
+        // IF RESULT: emit result
         emit("emitResponseData", response.data.results);
       })
       .catch((error) => {
-        // IF API ERROR: emmitting API's error
+        // IF API ERROR: emit API's error
         if (error.response && error.response.data) {
           emit("emitErrorMsg", error.response.data.status_message);
         } else {
@@ -60,7 +59,7 @@ function getMovies() {
         emit("emitLoader", false);
       });
   } else {
-    // IF EMPTY INPUT: empty ResponseData accordingly
+    // IF EMPTY INPUT: empty ResponseData, ErrorMsg and Loader accordingly
     emit("emitErrorMsg", "");
     emit("emitResponseData", "");
     emit("emitLoader", false);
