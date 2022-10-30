@@ -2,6 +2,10 @@
 
 CineMate is your best friend when it comes to movies. It only shows you the highest rated movies, and even lets you save movies for later!
 
+## Demo
+
+Visit the live demo at: https://cinemate-by-aron.netlify.app/
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
